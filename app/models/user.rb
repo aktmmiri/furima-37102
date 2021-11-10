@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   validates :nickname, :last_name, :first_name, :last_name_kana, :first_name_kana, :birth_date, presence: true
 
-  with_options format: {with: /\A[ぁ-んァ-ン一-龥]+\z/, message: 'には全角文字のみ使用可能です'} do
+  with_options format: {with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/, message: 'には全角文字のみ使用可能です'} do
     validates :last_name
     validates :first_name
   end
@@ -17,6 +17,6 @@ class User < ApplicationRecord
   end
 
   PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates_format_of :password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください'
+  validates_format_of :password, with: PASSWORD_REGEX, message: 'には半角英字と半角数字の両方を含めて設定してください'
 
 end
