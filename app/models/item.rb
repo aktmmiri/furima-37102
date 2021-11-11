@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   has_one_attached :image
+  belongs_to :user
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :sales_status
@@ -7,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :scheduled_delivery
   
+  validates :image, :name, :info, :price, presence: true
   validates :category_id, :sales_status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, numericality: {other_than: 1}
 
 end
