@@ -9,6 +9,6 @@ class Item < ApplicationRecord
   belongs_to :scheduled_delivery
   
   validates :image, :name, :info, :price, presence: true
-  validates :category_id, :sales_status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, numericality: {other_than: 1}
+  validates :category_id, :sales_status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, numericality: {other_than: 1, message: "can't be blank"}
 
 end
