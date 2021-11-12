@@ -2,7 +2,11 @@ class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :user
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category, :status, :fee, :prefecture, :scheduled
+  belongs_to :category
+  belongs_to :status
+  belongs_to :fee
+  belongs_to :prefecture
+  belongs_to :scheduled
   
   validates :image, :name, :info, :price, presence: true
   validates :category_id, :status_id, :fee_id, :prefecture_id, :scheduled_id, numericality: {other_than: 1, message: "を選択してください"}
