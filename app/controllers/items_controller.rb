@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: :new
+  before_action :authenticate_user!, only: [:new, :destroy]
+  before_action :set_item, only: [:show, :destroy]
 
   def index
     @items = Item.includes(:user).order("created_at DESC")
@@ -19,12 +20,24 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
+  end
+
+  def destroy
+    if current_user.id == @item.user_id
+      @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   private
 
   def item_params
     params.require(:item).permit(:image, :name, :info, :category_id, :status_id, :fee_id, :prefecture_id, :scheduled_id, :price).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
