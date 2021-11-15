@@ -22,6 +22,14 @@ class ItemsController < ApplicationController
   def show
   end
 
+  def edit
+
+  end
+
+  def update
+    
+  end
+
   def destroy
     if current_user.id == @item.user_id
       @item.destroy
