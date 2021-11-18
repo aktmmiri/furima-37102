@@ -47,64 +47,64 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Image can't be blank")
       end
       it 'nameが空だと出品できない' do
-        @item.name = ""
+        @item.name = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Name can't be blank")
       end
       it 'infoが空だと出品できない' do
-        @item.info = ""
+        @item.info = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Info can't be blank")
       end
       it 'category_idが1だと出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category を選択してください")
+        expect(@item.errors.full_messages).to include('Category を選択してください')
       end
       it 'status_idが1だと出品できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status を選択してください")
+        expect(@item.errors.full_messages).to include('Status を選択してください')
       end
       it 'fee_idが1だと出品できない' do
         @item.fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Fee を選択してください")
+        expect(@item.errors.full_messages).to include('Fee を選択してください')
       end
       it 'prefecture_idが1だと出品できない' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture を選択してください")
+        expect(@item.errors.full_messages).to include('Prefecture を選択してください')
       end
       it 'scheduled_idが1だと出品できない' do
         @item.scheduled_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Scheduled を選択してください")
+        expect(@item.errors.full_messages).to include('Scheduled を選択してください')
       end
       it 'priceが空だと出品できない' do
-        @item.price = ""
+        @item.price = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it 'priceが半角数字以外だと登録できない' do
         @item.price = '２５００'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price before type cast は半角数字で入力してください")
+        expect(@item.errors.full_messages).to include('Price before type cast は半角数字で入力してください')
       end
       it 'priceが300より低いと出品できない' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は¥300~¥9,999,999の間で入力してください")
+        expect(@item.errors.full_messages).to include('Price は¥300~¥9,999,999の間で入力してください')
       end
       it 'priceが9999999より大きいと出品できない' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price は¥300~¥9,999,999の間で入力してください")
+        expect(@item.errors.full_messages).to include('Price は¥300~¥9,999,999の間で入力してください')
       end
       it 'userが紐付いてないと出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("User must exist")
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
