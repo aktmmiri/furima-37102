@@ -14,20 +14,20 @@ RSpec.describe Item, type: :model do
         @item.category_id = 2
         expect(@item).to be_valid
       end
-      it 'sales_status_idが1でなければ出品できる' do
-        @item.sales_status_id = 2
+      it 'status_idが1でなければ出品できる' do
+        @item.status_id = 2
         expect(@item).to be_valid
       end
-      it 'shipping_fee_status_idが1でなければ出品できる' do
-        @item.shipping_fee_status_id = 2
+      it 'fee_idが1でなければ出品できる' do
+        @item.fee_id = 2
         expect(@item).to be_valid
       end
       it 'prefecture_idが1でなければ出品できる' do
         @item.prefecture_id = 2
         expect(@item).to be_valid
       end
-      it 'scheduled_delivery_idが1でなければ出品できる' do
-        @item.scheduled_delivery_id = 2
+      it 'scheduled_idが1でなければ出品できる' do
+        @item.scheduled_id = 2
         expect(@item).to be_valid
       end
       it 'priceが300~9999999の間なら出品できる' do
@@ -61,25 +61,25 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category を選択してください")
       end
-      it 'sales_status_idが1だと出品できない' do
-        @item.sales_status_id = 1
+      it 'status_idが1だと出品できない' do
+        @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Sales status を選択してください")
+        expect(@item.errors.full_messages).to include("Status を選択してください")
       end
-      it 'shipping_fee_status_idが1だと出品できない' do
-        @item.shipping_fee_status_id = 1
+      it 'fee_idが1だと出品できない' do
+        @item.fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee status を選択してください")
+        expect(@item.errors.full_messages).to include("Fee を選択してください")
       end
       it 'prefecture_idが1だと出品できない' do
         @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture を選択してください")
       end
-      it 'scheduled_delivery_idが1だと出品できない' do
-        @item.scheduled_delivery_id = 1
+      it 'scheduled_idが1だと出品できない' do
+        @item.scheduled_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Scheduled delivery を選択してください")
+        expect(@item.errors.full_messages).to include("Scheduled を選択してください")
       end
       it 'priceが空だと出品できない' do
         @item.price = ""
